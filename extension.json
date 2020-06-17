@@ -1,0 +1,32 @@
+{
+	"name": "UploadPermissions",
+	"version": "0.1.0",
+	"author": [
+		"[https://www.mediawiki.org/wiki/User:Jamesmontalvo3 James Montalvo]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:UploadPermissions",
+	"descriptionmsg": "ext-uploadpermissions-desc",
+	"type": "other",
+	"MessagesDirs": {
+		"UploadPermissions": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"UploadPermissionsHooks": "includes/UploadPermissionsHooks.php"
+	},
+	"Hooks": {
+		"ImgAuthBeforeStream": [
+			"UploadPermissionsHooks::onImgAuthBeforeStream"
+		]
+	},
+	"config": {
+		"UploadPermsRejectFilesForGroups": {
+			"value": [],
+			"description": "Array mapping group names to arrays of file extensions to reject",
+			"descriptionmsg": "ext-uploadpermissions-config-rejectfilesforgroups",
+			"public": true
+		}
+	},
+	"manifest_version": 2
+}

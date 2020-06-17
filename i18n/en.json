@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"James Montalvo"
+		]
+	},
+	"ext-uploadpermissions-desc": "Extension to make certain file types not downloadable to some users",
+	"ext-uploadpermissions-config-rejectfilesforgroups": "Array mapping group names to arrays of file extensions to reject. Example: ['no_images_group' => ['jpg','png], 'no_pdfs' => ['pdf']]"
+}
