@@ -3,18 +3,19 @@
 class UploadPermissionsHooks {
 
 	/**
-	 * Handler for PersonalUrls hook. Replace the "watchlist" item on the user
-	 * toolbar ('personal URLs') with a link to Special:PendingReviews.
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PersonalUrls
+	 * Handler for ImgAuthBeforeStream hook. Allow wikis to disallow access to files (if using
+	 * img_auth.php) based on group and file extension.
 	 *
-	 * @param array &$title
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ImgAuthBeforeStream
+	 *
+	 * @param Title &$title
 	 * @param string &$path
 	 * @param string &$name
 	 * @param array &$result
 	 * @return bool
 	 */
 	public static function onImgAuthBeforeStream(
-		Title &$title, string &$path, string &$name, array &$result
+		&$title, string &$path, string &$name, &$result
 	) {
 		global $wgUser, $wgUploadPermsRejectFilesForGroups;
 		$userGroups = $wgUser->getGroups();
