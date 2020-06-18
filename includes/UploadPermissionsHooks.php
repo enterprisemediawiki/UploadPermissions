@@ -19,11 +19,13 @@ class UploadPermissionsHooks {
 	) {
 		global $wgUser, $wgUploadPermsRejectFilesForGroups;
 		$userGroups = $wgUser->getGroups();
-		$fileExt = pathinfo( $path )['extension'];
+		$fileExt = strtolower( pathinfo( $path )['extension'] );
 
 		foreach ( $wgUploadPermsRejectFilesForGroups as $group => $extensions ) {
+			$lowercaseExtensions = array_map( strtolower, $extensions );
+
 			// user is a member of this group, and current file is in reject list for the group
-			if ( in_array( $group, $userGroups ) && in_array( $fileExt, $extensions ) ) {
+			if ( in_array( $group, $userGroups ) && in_array( $fileExt, $lowercaseExtensions ) ) {
 				$result = [
 					'img-auth-accessdenied',
 					'img-auth-noread',
